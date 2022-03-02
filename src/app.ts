@@ -79,7 +79,12 @@ class App {
 
     mongoSetup = () => {
         mongoose
-            .connect(this.dbUrl, {})
+            .connect(this.dbUrl, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+                useCreateIndex: true,
+                useFindAndModify: false
+            })
             .then(() => {
                 console.log('Connected to MongoDB!');
             })
