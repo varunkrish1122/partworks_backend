@@ -394,20 +394,20 @@ export const Schema = {
     company_description: Joi.string(),
     company_logo: Joi.string()
   }),
-  createCSUser: Joi.object({
-    first_name: Joi.string().required(),
-    last_name: Joi.string().required(),
-    email: Joi.string().email().required(),
-    user_type: Joi.string().valid(UserType.support).required(),
-    description: Joi.string().required(),
-    location: LocationSchema,
-    languages: Joi.array().unique().items(Joi.string()),
-    company_name: Joi.string(),
-    company_description: Joi.string(),
-    company_logo: Joi.string(),
-    agent_id: Joi.string(),
-    registration_source: Joi.string()
-  }),
+  // createCSUser: Joi.object({
+  //   first_name: Joi.string().required(),
+  //   last_name: Joi.string().required(),
+  //   email: Joi.string().email().required(),
+  //   user_type: Joi.string().valid(UserType.support).required(),
+  //   description: Joi.string().required(),
+  //   location: LocationSchema,
+  //   languages: Joi.array().unique().items(Joi.string()),
+  //   company_name: Joi.string(),
+  //   company_description: Joi.string(),
+  //   company_logo: Joi.string(),
+  //   agent_id: Joi.string(),
+  //   registration_source: Joi.string()
+  // }),
   createSubject: Joi.object().keys({
     title: Joi.string().required(),
     category: mongoIDValidation.required()

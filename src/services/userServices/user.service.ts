@@ -1,8 +1,8 @@
-import { UserModel } from 'models/user.model';
-import { ReferralModel } from 'models/referral.model';
-import { ContactModel } from 'models/contact.model';
-import { IUser } from 'interfaces';
-import { generateUID } from 'utils/uuid';
+import { UserModel } from '../../models/user.model';
+import { ReferralModel } from '../../models/referral.model';
+import { ContactModel } from '../../models/contact.model';
+import { IUser } from '../../interfaces';
+import { generateUID } from '../../utils/uuid';
 
 export class UserService {
   protected createUser = async (data: IUser) => {
@@ -45,6 +45,7 @@ export class UserService {
     return ContactModel.insertMany(contacts);
   };
   protected getAllUsers = async (filters: unknown) => {
+    console.log(filters, 'filters');
     return UserModel.find(filters)
       .populate('agentProfile')
       .populate('csProfile')

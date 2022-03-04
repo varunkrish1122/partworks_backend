@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { UserController } from '../../controllers';
-import { validate } from 'middlewares/validations.middleware';
+import { validate } from '../../middlewares/validations.middleware';
 
 export class UserRoutes extends UserController {
   public readonly router: Router;

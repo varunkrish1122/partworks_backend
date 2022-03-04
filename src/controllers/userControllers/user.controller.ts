@@ -1,6 +1,7 @@
+import { Request, Response } from 'express';
 import { UserService } from '../../services';
 import { successResponse, failureResponse } from '../../utils/responses';
-import { IUser, IFacebook, IAgent, ITutor, ICSUser } from '../../interfaces';
+import { IUser } from '../../interfaces';
 import { generateRandomUID } from '../../utils/random.uid';
 export class UserController extends UserService {
   protected createUserAsync = async (req: Request, res: Response) => {
@@ -13,9 +14,8 @@ export class UserController extends UserService {
       phone_verified: false
     };
     try {
-      let query;
       const { email = '', phone = '', referral_code } = data || {};
-      query = { email: email.toLowerCase(), phone };
+      const query = { email: email.toLowerCase(), phone };
       // if (registration_source == 'phone') {
       //     // const isValid = await twilio.checkPhoneValidOrNot(data.phone);
       //     // if (!isValid)
@@ -24,10 +24,10 @@ export class UserController extends UserService {
       // }
       const user = await this.getAllUsers(query);
       let userCreated;
-      let agentCreated;
-      // let studentCreated;
-      let tutorCreated;
-      let csUserCreated;
+      // let agentCreated;
+      // // let studentCreated;
+      // let tutorCreated;
+      // let csUserCreated;
       if (user.length) {
         return failureResponse(
           'Sorry! Email Or Number Already Exists.',
@@ -93,7 +93,7 @@ export class UserController extends UserService {
       //     await sendMessage(userCreated.phone, message);
       // }
 
-      // successResponse('User created successfully.', userCreated, res);
+      successResponse('User created successfully.', userCreated, res);
     } catch (error: unknown) {
       failureResponse('Failed to fetch user', error, res);
     }
