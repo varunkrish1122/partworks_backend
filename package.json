@@ -12,6 +12,7 @@
     "prod": "yarn build && node ./dist/server.js",
     "local": "yarn build && node ./dist/server.js",
     "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
     "copy-files": "copyfiles -u 1 src/**/*.ejs ./dist",
     "seed:data": "ts-node ./src/scripts/seed.data.ts"
   },

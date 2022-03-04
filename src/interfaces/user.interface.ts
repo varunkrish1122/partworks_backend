@@ -5,5 +5,5 @@ export interface IUser extends ICommonUser {
   csProfile?: ICSUser;
   tutorProfile?: ITutor;
   studentProfile?: IStudent;
-  _id?: string
+  _id?: string;
 }

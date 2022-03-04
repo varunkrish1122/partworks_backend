@@ -5,13 +5,13 @@ import { Schema } from '../validations/schema';
 export const validate = (type: string, source?: 'query' | 'params') => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const key = source || 'body'
-      let data = req[`${key}`]
+      const key = source || 'body';
+      const data = req[`${key}`];
       // source == 'query' ? (data = ) : source == 'params' ? (data = req.params) : (data = req.body);
       const value = await Schema[type].validateAsync(data, {
         abortEarly: false
       });
-      req[`${key}`] = value
+      req[`${key}`] = value;
       // if (!source) {
       //   req.body = value;
       // }
